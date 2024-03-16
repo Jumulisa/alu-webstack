@@ -1,4 +1,3 @@
-
 global
     log 127.0.0.1 local0 notice
     maxconn 2000
@@ -26,6 +25,6 @@ http-request redirect code 301 scheme https unless { ssl_fc }
 backend shiftafrica
         mode http
         balance roundrobin
-        server 5779-web-01 54.196.147.72 check
-        server 5779-web-02 18.213.0.162 check
+        server 5779-web-01 54.196.147.72:80 check
+        server 5779-web-02 18.213.0.162:80 check
 
