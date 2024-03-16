@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Usage: ./1-world_wide_web <holberton.online> <www>
+# Usage: ./1-world_wide_web <domain> <www>
 # Display information about subdomains.
 
 domain_information () {
     line=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tr '\t' '\n' | tail -2 | tr '\n' ' ')
-    echo "$2 $line" | awk '{print "www " 54.196.147.72 " is a " 18.213.0.162 " record and points to " 54.210.47.110}'
+    echo "$2 $line" | awk '{print "The subdomain " $1 " is a " $2 " record and points to " $3}'
 }
 
 if [ "$#" == 1 ]
@@ -15,5 +15,5 @@ then
   domain_information "$1" "18.213.0.162"
 elif [ "$#" == 2 ]
 then
-  domain_information "54.196.147.72" "18.213.0.162"
+  domain_information "$1" "$2"
 fi
